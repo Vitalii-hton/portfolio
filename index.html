@@ -164,9 +164,44 @@
     .text-headline {
         color: #000000 !important;
     }
-        .section-textual {
+        /* Секция автоматически подстраивается под контент */
+.section-textual {
     height: auto !important;
     min-height: auto !important;
+}
+
+/* Скрытая часть CV */
+.cv-hidden {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s ease-out, opacity 0.4s ease-out;
+}
+
+.cv-hidden.open {
+    max-height: 3000px;
+    opacity: 1;
+}
+
+/* Кнопка */
+.cv-toggle-button {
+    background: none;
+    border: 1px solid #000;
+    color: #000;
+    padding: 12px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.3s, color 0.3s;
+}
+
+.cv-toggle-button:hover {
+    background: #000;
+    color: #fff;
 }
 
     </style>
@@ -240,107 +275,80 @@
     </main>
     <section id="section-textual" class="section-textual">
         <div class="content-flexbox">
-            <div class="text-headline">
-                CV&#x27;s
-                <br/>
-                Vitalii Bondarenco.
-                <br/>
-            </div>
-            <div class="text-blocks">
-                <div class="rectangle-description-right">
-                    <div class="rectangle-text-block">
-                        <img src="https://cdn.prod.website-files.com/654a0e017d5fb77fa19a7acd/654c9f0d635e83de67f1d976_Vectors-Wrapper.svg" loading="lazy" width="6" height="6" alt="" class="rectangle"/>
-                        <div class="text-body-justified">
-                            <p>Middle 3D Generalist (4 года опыта) с уверенным покрытием полного CGI-пайплайна: моделинг, текстуринг, шейдинг, лайтинг и рендер. Работаю в Maya, Blender, Cinema 4D и Redshift. Имею выраженный технический уклон: умею находить и устранять ошибки интеграции ассетов, оптимизировать сцены, повышать стабильность пайплайна и качество рендера.</p>
-
-                            <p>Фокусируюсь на создании продакшен-готовых ассетов и шотов, требующих минимального количества правок. Опыт работы на рекламных, музыкальных и VFX-проектах. Нацелен на участие в кино- и масштабных продакшн-проектах, где техническая Generalist-компетенция повышает скорость и эффективность пайплайна.</p>
-
-                            <h3>Skills</h3>
-
-                            <p>
-                                <strong>Core Competencies:</strong>
-                            </p>
-                            <ul>
-                                <li>Technical Art: Rigging (Maya/C4D), Pipeline Development, Process Optimization</li>
-                                <li>Production: Keyframe Animation, Texturing &amp; Shading, Problem Solving</li>
-                                <li>Soft Skills: Умение находить нестандартные технические решения, выстраивание эффективных рабочих структур</li>
-                            </ul>
-
-                            <p>
-                                <strong>Software Stack:</strong>
-                            </p>
-                            <ul>
-                                <li>
-                                    <strong>3D &amp; Rigging:</strong>
-                                     Maya, Cinema 4D, Blender
-                                </li>
-                                <li>
-                                    <strong>Texturing:</strong>
-                                     Substance Painter
-                                </li>
-                                <li>
-                                    <strong>Compositing &amp; Motion:</strong>
-                                     Adobe After Effects, 3D Composer Pro
-                                </li>
-                                <li>
-                                    <strong>2D:</strong>
-                                     Adobe Photoshop
-                                </li>
-                            </ul>
-
-                            <h3>Experience</h3>
-
-                            <div class="experience-item">
-                                <p>
-                                    <strong>Abyss Digital | 3D Animator / Rigger</strong>
-                                     [Годы работы]
-                                </p>
-                                <ul>
-                                    <li>Отвечал за риггинг и анимацию персонажей, обеспечивая стабильную работу ассетов в пайплайне</li>
-                                    <li>Создавал ключевую анимацию для кинематографических вставок</li>
-                                </ul>
-                            </div>
-
-                            <div class="experience-item">
-                                <p>
-                                    <strong>Weis Studio | 3D Generalist</strong>
-                                     [Годы работы]
-                                </p>
-                                <ul>
-                                    <li>Выполнял полный цикл задач generalist'а, от моделинга до финального рендера, соблюдая единую стилистику студии</li>
-                                </ul>
-                            </div>
-
-                            <div class="experience-item">
-                                <p>
-                                    <strong>Inccrypted | Motion Designer</strong>
-                                     [Годы работы]
-                                </p>
-                                <ul>
-                                    <li>Разрабатывал моушн-графику для медиа-контента, работая в быстром темпе новостного потока</li>
-                                </ul>
-                            </div>
-
-                            <div class="experience-item">
-                                <p>
-                                    <strong>Freelance | 3D Generalist</strong>
-                                     [Годы работы]
-                                </p>
-                                <ul>
-                                    <li>Реализовывал проекты для различных клиентов, самостоятельно управляя сроками и техническими требованиями</li>
-                                </ul>
-                            </div>
-                        </div>
+    <div class="text-headline">
+        CV's<br>
+        Vitalii Bondarenco.<br>
+    </div>
+    <div class="text-blocks">
+        <div class="rectangle-description-right">
+            <div class="rectangle-text-block">
+                <img src="https://cdn.prod.website-files.com/654a0e017d5fb77fa19a7acd/654c9f0d635e83de67f1d976_Vectors-Wrapper.svg" loading="lazy" width="6" height="6" alt="" class="rectangle">
+                
+                <!-- Видимая часть (первый параграф) -->
+                <div class="cv-visible">
+                    <p>Middle 3D Generalist (4 года опыта) с уверенным покрытием полного CGI-пайплайна: моделинг, текстуринг, шейдинг, лайтинг и рендер. Работаю в Maya, Blender, Cinema 4D и Redshift. Имею выраженный технический уклон: умею находить и устранять ошибки интеграции ассетов, оптимизировать сцены, повышать стабильность пайплайна и качество рендера.</p>
+                </div>
+                
+                <!-- Скрытая часть -->
+                <div id="cv-hidden-content" class="cv-hidden">
+                    <p>Фокусируюсь на создании продакшен-готовых ассетов и шотов, требующих минимального количества правок. Опыт работы на рекламных, музыкальных и VFX-проектах. Нацелен на участие в кино- и масштабных продакшн-проектах, где техническая Generalist-компетенция повышает скорость и эффективность пайплайна.</p>
+                    
+                    <h3>Skills</h3>
+                    <p><strong>Core Competencies:</strong></p>
+                    <ul>
+                        <li>Technical Art: Rigging (Maya/C4D), Pipeline Development, Process Optimization</li>
+                        <li>Production: Keyframe Animation, Texturing & Shading, Problem Solving</li>
+                        <li>Soft Skills: Умение находить нестандартные технические решения, выстраивание эффективных рабочих структур</li>
+                    </ul>
+                    
+                    <p><strong>Software Stack:</strong></p>
+                    <ul>
+                        <li><strong>3D & Rigging:</strong> Maya, Cinema 4D, Blender</li>
+                        <li><strong>Texturing:</strong> Substance Painter</li>
+                        <li><strong>Compositing & Motion:</strong> Adobe After Effects, 3D Composer Pro</li>
+                        <li><strong>2D:</strong> Adobe Photoshop</li>
+                    </ul>
+                    
+                    <h3>Experience</h3>
+                    <div class="experience-item">
+                        <p><strong>Abyss Digital | 3D Animator / Rigger</strong></p>
+                        <ul>
+                            <li>Отвечал за риггинг и анимацию персонажей</li>
+                            <li>Создавал ключевую анимацию для кинематографических вставок</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <p><strong>Weis Studio | 3D Generalist</strong></p>
+                        <ul>
+                            <li>Выполнял полный цикл задач generalist'а</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <p><strong>Inccrypted | Motion Designer</strong></p>
+                        <ul>
+                            <li>Разрабатывал моушн-графику для медиа-контента</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <p><strong>Freelance | 3D Generalist</strong></p>
+                        <ul>
+                            <li>Реализовывал проекты для различных клиентов</li>
+                        </ul>
                     </div>
                 </div>
+                
+                <!-- Кнопка -->
+                <button id="cv-toggle-btn" class="cv-toggle-button">Просмотреть CV</button>
             </div>
-            <a data-w-id="3088b527-7359-13a4-a1bf-8ded192dc409" href="projects.html" class="link-block w-inline-block">
-                <div class="button-text-button">Explore Our Work</div>
-                <div class="icon-button-primary">
-                    <img loading="lazy" src="https://cdn.prod.website-files.com/654a0e017d5fb77fa19a7acd/654ca4982d7a3cdf374d64f5_Vectors-Wrapper.svg" alt="" class="icon-arrow-inverted"/>
-                </div>
-            </a>
         </div>
+    </div>
+    <a data-w-id="3088b527-7359-13a4-a1bf-8ded192dc409" href="projects.html" class="link-block w-inline-block">
+        <div class="button-text-button">Explore Our Work</div>
+        <div class="icon-button-primary">
+            <img loading="lazy" src="https://cdn.prod.website-files.com/654a0e017d5fb77fa19a7acd/654ca4982d7a3cdf374d64f5_Vectors-Wrapper.svg" alt="" class="icon-arrow-inverted">
+        </div>
+    </a>
+</div>
     </section>
     <section class="section-projects">
         <div class="separator">
@@ -948,5 +956,23 @@
 
     };
     </script>
+    <script>
+(function() {
+    const hiddenContent = document.getElementById('cv-hidden-content');
+    const toggleBtn = document.getElementById('cv-toggle-btn');
+    
+    if (toggleBtn && hiddenContent) {
+        toggleBtn.addEventListener('click', function() {
+            hiddenContent.classList.toggle('open');
+            
+            if (hiddenContent.classList.contains('open')) {
+                toggleBtn.textContent = 'Скрыть CV';
+            } else {
+                toggleBtn.textContent = 'Просмотреть CV';
+            }
+        });
+    }
+})();
+</script>
 </body>
 </html>
