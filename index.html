@@ -208,7 +208,6 @@
 .cv-hidden strong,
 .rectangle-text-block p {
     color: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
 }
         
 
@@ -979,6 +978,33 @@
                 toggleBtn.textContent = 'Просмотреть CV';
             }
         });
+    }
+})();
+</script>
+    <script>
+(function() {
+    // Ждём пока Webflow анимация установит opacity секции
+    const section = document.querySelector('.section-textual');
+    
+    if (section) {
+        // Наблюдаем за изменениями opacity секции
+        const observer = new MutationObserver(function() {
+            const opacity = parseFloat(window.getComputedStyle(section).opacity);
+            const textElements = section.querySelectorAll('.cv-visible p, .cv-hidden p, .cv-hidden li, .cv-hidden h3, .rectangle-text-block p');
+            
+            // Компенсируем прозрачность родителя для текста
+            if (opacity > 0 && opacity < 1) {
+                textElements.forEach(function(el) {
+                    el.style.opacity = (1 / opacity).toString();
+                });
+            } else if (opacity >= 1) {
+                textElements.forEach(function(el) {
+                    el.style.opacity = '1';
+                });
+            }
+        });
+        
+        observer.observe(section, { attributes: true, attributeFilter: ['style'] });
     }
 })();
 </script>
