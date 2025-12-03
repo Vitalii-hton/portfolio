@@ -341,11 +341,11 @@
                 </div>
                 
                 <!-- Кнопка -->
-                <button id="cv-toggle-btn" class="cv-toggle-button">Просмотреть CV</button>
+                
             </div>
         </div>
     </div>
-    <a data-w-id="3088b527-7359-13a4-a1bf-8ded192dc409" href="projects.html" class="link-block w-inline-block">
+    <a id="cv-toggle-btn" data-w-id="3088b527-7359-13a4-a1bf-8ded192dc409" href="#" class="link-block w-inline-block">
         <div class="button-text-button">Explore Our Work</div>
         <div class="icon-button-primary">
             <img loading="lazy" src="https://cdn.prod.website-files.com/654a0e017d5fb77fa19a7acd/654ca4982d7a3cdf374d64f5_Vectors-Wrapper.svg" alt="" class="icon-arrow-inverted">
@@ -963,15 +963,17 @@
 (function() {
     const hiddenContent = document.getElementById('cv-hidden-content');
     const toggleBtn = document.getElementById('cv-toggle-btn');
+    const buttonText = toggleBtn ? toggleBtn.querySelector('.button-text-button') : null;
     
-    if (toggleBtn && hiddenContent) {
-        toggleBtn.addEventListener('click', function() {
+    if (toggleBtn && hiddenContent && buttonText) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Отменяем переход по ссылке
             hiddenContent.classList.toggle('open');
             
             if (hiddenContent.classList.contains('open')) {
-                toggleBtn.textContent = 'Скрыть CV';
+                buttonText.textContent = 'Скрыть CV';
             } else {
-                toggleBtn.textContent = 'Просмотреть CV';
+                buttonText.textContent = 'Просмотреть CV';
             }
         });
     }
