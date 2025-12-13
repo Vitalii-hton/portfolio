@@ -633,6 +633,47 @@
 </section>
 
   <section class="section-instagram">
+  
+  <style>
+    /* Настройки для Десктопа (экран шире 991px) */
+    @media screen and (min-width: 992px) {
+      .container-instagram {
+        display: flex;           /* Включаем режим "в строку" */
+        align-items: center;     /* Выравниваем по центру по вертикали */
+        justify-content: space-between; /* Распределяем пространство */
+        gap: 60px;               /* Расстояние между текстом и картинкой */
+      }
+      
+      .ig-content {
+        width: 40%;              /* Текст занимает 40% ширины */
+        max-width: 450px;
+      }
+
+      .instagram-embed {
+        width: 55% !important;   /* Картинка занимает оставшееся место */
+        margin-top: 0 !important; /* Убираем отступ сверху на десктопе */
+      }
+    }
+
+    /* Настройки для Мобильных и Планшетов (экран уже 991px) */
+    @media screen and (max-width: 991px) {
+      .container-instagram {
+        display: flex;
+        flex-direction: column;  /* Ставим элементы друг под другом */
+      }
+      
+      .ig-content {
+        width: 100%;             /* Текст на всю ширину */
+        margin-bottom: 30px;
+      }
+
+      .instagram-embed {
+        width: 100% !important;  /* Картинка на всю ширину */
+        margin-top: 20px !important;
+      }
+    }
+  </style>
+
   <div class="container-instagram">
     <div class="ig-content">
       <div class="text-headline">Designing Your Visual Story<br></div>
@@ -647,15 +688,15 @@
         <div class="icon-button-primary"><img loading="lazy" src="https://cdn.prod.website-files.com/654a0e017d5fb77fa19a7acd/654ca4982d7a3cdf374d64f5_Vectors-Wrapper.svg" alt="" class="icon-arrow-inverted"></div>
       </a>
     </div>
-    
-    <div class="instagram-embed" style="width: 100%; margin-top: 40px;">
-       <img src="https://pub-4efafbeb23134e27bb6bc687c06cdc3b.r2.dev/rebels/main.webp" 
-            loading="lazy" 
-            alt="Rebels Visual Story" 
-            style="width: 100%; height: auto; object-fit: cover; display: block;">
-    </div>
 
+    <div class="instagram-embed">
+      <img src="https://pub-4efafbeb23134e27bb6bc687c06cdc3b.r2.dev/rebels/main.webp" 
+           loading="lazy" 
+           alt="Rebels Visual Story" 
+           style="width: 100%; height: auto; border-radius: 4px; object-fit: cover; display: block;">
+    </div>
   </div>
+  
   <div class="ig-gradient-block"></div>
 </section>
 
