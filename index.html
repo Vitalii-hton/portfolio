@@ -633,6 +633,40 @@
 </section>
 
  <section class="section-instagram">
+   <style>
+    /* Стили только для десктопа (широкие экраны) */
+    @media screen and (min-width: 992px) {
+      .container-instagram {
+        display: flex;                /* Включаем Flexbox */
+        align-items: center;          /* Самое важное: центрируем по вертикали */
+        justify-content: space-between; 
+        height: 100%;                 /* Используем высоту секции */
+        min-height: 600px;           /* Минимальная высота для комфортного просмотра */
+      }
+
+      .instagram-embed {
+        /* Добавляем отступ сверху, чтобы компенсировать "поднятие" от анимации */
+        margin-top: 100px !important; 
+        width: 50% !important;        /* Ограничиваем ширину картинки */
+      }
+      
+      .ig-content {
+        width: 40%;
+      }
+    }
+
+    /* Для мобильных устройств оставляем как было (вертикально) */
+    @media screen and (max-width: 991px) {
+      .container-instagram {
+        display: flex;
+        flex-direction: column;
+      }
+      .instagram-embed {
+        width: 100% !important;
+        margin-top: 20px;
+      }
+    }
+  </style>
   <div class="container-instagram">
     
     <div class="ig-content">
