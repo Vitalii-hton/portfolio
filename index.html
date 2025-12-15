@@ -634,36 +634,50 @@
 
  <section class="section-instagram">
    <style>
-    /* Стили только для десктопа (широкие экраны) */
+    /* Десктоп (широкие экраны) */
     @media screen and (min-width: 992px) {
       .container-instagram {
-        display: flex;                /* Включаем Flexbox */
-        align-items: center;          /* Самое важное: центрируем по вертикали */
-        justify-content: space-between; 
-        height: 100%;                 /* Используем высоту секции */
-        min-height: 600px;           /* Минимальная высота для комфортного просмотра */
+        display: flex;
+        justify-content: space-between; /* Текст слева, фото справа */
+        align-items: center; /* Центрируем их относительно друг друга по вертикали */
+        /* Убираем лишние ограничения высоты, чтобы контент диктовал высоту */
+      }
+
+      .ig-content {
+        /* ВАЖНО: Убрал жесткие проценты и max-width. 
+           flex: 1 означает "занимай свободное место, но не меньше контента" */
+        flex: 1; 
+        padding-right: 60px; /* Отступ справа от текста до картинки */
       }
 
       .instagram-embed {
-        /* Добавляем отступ сверху, чтобы компенсировать "поднятие" от анимации */
-        margin-top: 100px !important; 
-        width: 50% !important;        /* Ограничиваем ширину картинки */
+        flex: 1; /* Картинка тоже занимает часть места */
+        max-width: 50%; /* Но не больше половины экрана */
+        /* Отступ сверху для компенсации параллакса, чтобы картинка была по центру */
+        margin-top: 80px; 
       }
       
-      .ig-content {
-        width: 40%;
+      /* Дополнительно: гарантируем, что картинка не сплющится */
+      .instagram-embed img {
+        width: 100%;
+        height: auto;
+        display: block;
       }
     }
 
-    /* Для мобильных устройств оставляем как было (вертикально) */
+    /* Мобильные устройства */
     @media screen and (max-width: 991px) {
       .container-instagram {
-        display: flex;
-        flex-direction: column;
+        display: block; /* Возвращаем стандартное поведение */
+      }
+      .ig-content {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 30px;
       }
       .instagram-embed {
-        width: 100% !important;
-        margin-top: 20px;
+        width: 100%;
+        margin-top: 0;
       }
     }
   </style>
