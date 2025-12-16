@@ -146,24 +146,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Check if the cookie is set to hide the cookie alert
-    if (document.cookie.indexOf('cookieAlertClosed=true') !== -1) {
-      document.querySelector('.cookie-alert').style.display = 'none';
-    } else {
-      // If the cookie is not set, set an initial delay before showing the alert
-      setTimeout(function () {
-        document.querySelector('.cookie-alert').style.display = 'flex';
-      }, 1000); // Adjust the delay as needed
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if the cookie is set to hide the cookie alert
+      if (document.cookie.indexOf('cookieAlertClosed=true') !== -1) {
+        document.querySelector('.cookie-alert').style.display = 'none';
+      } else {
+        // If the cookie is not set, set an initial delay before showing the alert
+        setTimeout(function() {
+          document.querySelector('.cookie-alert').style.display = 'flex';
+        }, 1000); // Adjust the delay as needed
+      }
 
-    // Add click event listener to the button
-    document.querySelector('.button-accept-cookies').addEventListener('click', function () {
-      // Set a session cookie to remember that the alert has been closed
-      document.cookie = 'cookieAlertClosed=true; path=/; expires=0';
+      // Add click event listener to the button
+      const cookieBtn = document.querySelector('.button-accept-cookies');
+      if (cookieBtn) {
+          cookieBtn.addEventListener('click', function(e) {
+            // ВОТ ЭТА СТРОЧКА РЕШАЕТ ПРОБЛЕМУ:
+            e.preventDefault(); 
+            
+            // Set a session cookie to remember that the alert has been closed
+            document.cookie = 'cookieAlertClosed=true; path=/; expires=0';
 
-      // Hide the cookie alert immediately
-      document.querySelector('.cookie-alert').style.display = 'none';
+            // Hide the cookie alert immediately
+            document.querySelector('.cookie-alert').style.display = 'none';
+          });
+      }
     });
-  });
-</script></body></html>
+  </script></body></html>
