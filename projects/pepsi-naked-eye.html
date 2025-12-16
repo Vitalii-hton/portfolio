@@ -112,34 +112,33 @@
             }
         }
 
-        /* === ИСПРАВЛЕНИЕ ГАЛЕРЕИ === */
+        /* === ИЗМЕНЕННЫЕ СТИЛИ ГАЛЕРЕИ === */
         
-        /* Стили для картинки, чтобы она не плющилась */
+        /* Галерея теперь всегда в одну колонку (вертикально) */
+        .horizontal-image-group {
+            display: grid;
+            grid-template-columns: 1fr; /* Одна колонка на всю ширину */
+            gap: 40px; /* Отступ между картинками */
+            width: 100%;
+        }
+
+        /* Картинка занимает всю ширину и подстраивает высоту */
         .gallery-image {
             width: 100%;
-            height: auto; /* Сохраняет пропорции */
+            height: auto; 
             display: block;
             object-fit: cover;
         }
-
-        /* Сетка для десктопа: 2 колонки, выравнивание по верху (или центру) */
-        @media screen and (min-width: 992px) {
-            .horizontal-image-group {
-                display: grid;
-                grid-template-columns: 1fr 1fr; /* Две равные колонки */
-                gap: 20px;
-                align-items: center; /* Центрируем по вертикали, чтобы не растягивало */
-            }
+        
+        .image-group {
+            width: 100%;
+        }
+        
+        .image-lightbox {
+            width: 100%;
+            display: block;
         }
 
-        /* Сетка для мобильных: 1 колонка */
-        @media screen and (max-width: 991px) {
-            .horizontal-image-group {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
     </style>
 </head>
 
